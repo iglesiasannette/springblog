@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Showing All The Ads</title>
+</head>
+<body>
+<h1>Featured Posts</h1>
+
+<div class="card" th:each="post : ${posts}">
+    <h1 th:text="${post.title}"></h1>
+    <p th:text="${post.body}"></p>
+
+    <input type="hidden" name="id" th:value="${post.id}">
+</div>
+</body>
+</html>
