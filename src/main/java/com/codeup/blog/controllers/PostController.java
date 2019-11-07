@@ -1,6 +1,7 @@
 package com.codeup.blog.controllers;
 
 import com.codeup.blog.Repositories.PostRepository;
+import com.codeup.blog.Repositories.UserRepository;
 import com.codeup.blog.models.Post;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,6 +32,7 @@ public class PostController{
     @RequestMapping(path = "/posts/create", method = RequestMethod.GET)
     @ResponseBody
     public String showCreateForm(){
+
         return "this page allows the user to view the form to create a post";
     }
 

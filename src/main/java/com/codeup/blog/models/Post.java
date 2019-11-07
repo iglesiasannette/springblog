@@ -1,4 +1,5 @@
 package com.codeup.blog.models;
+import javax.persistence.*;
 
 
 //Create a Post class. This class will ultimately represent a POST record from our database.
@@ -8,6 +9,7 @@ import com.codeup.blog.Repositories.PostRepository;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import javax.persistence.*;
+import java.awt.*;
 
 @Entity
 @Table(name="posts")
@@ -24,6 +26,10 @@ public class Post {
 
     @Column(columnDefinition = "TEXT")
     private String body;
+
+    @OneToOne
+    private User user;
+
 
     public Post (long id, String title, String body){
         this.id = id;
