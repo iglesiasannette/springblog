@@ -1,17 +1,30 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Showing All The Ads</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link href="../../static.css/style.css" rel="stylesheet">
+    <title>Showing All The Posts</title>
 </head>
 <body>
-<h1>Featured Posts</h1>
+<div th:replace="fragments/navbar :: main-navbar"></div>
+<header class="jumbotron">
+    <h1 class="display-3 text-center">Featured Ads</h1>
+</header>
+<div class="container">
 
 <div class="card" th:each="post : ${posts}">
-    <h1 th:text="${post.title}"></h1>
+
+    <a th:href="@{'posts/' + ${post.id}}" th:text="${post.title}"></a>
+
+<!--    <h1 th:text="${post.title}"></h1>-->
     <p th:text="${post.body}"></p>
 
-    <input type="hidden" name="id" th:value="${post.id}">
+
+<!--    <input type="hidden" name="id" th:value="${post.id}">-->
 </div>
+</div>
+
 </body>
+<div th:replace="fragments/footer :: main-footer"></div>
 </html>

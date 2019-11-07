@@ -1,0 +1,7 @@
+.container {
+    background-color: mediumpurple;
+}
+
+header.jumbotron {
+    margin: 0 !important;
+}
