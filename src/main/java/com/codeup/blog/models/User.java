@@ -3,6 +3,7 @@ package com.codeup.blog.models;
 //Create a User class, with (at least) fields for id, username, email, and password.
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="users")
@@ -26,13 +27,20 @@ public class User {
     @Column(nullable = false, length = 100)
     private String password;
 
+    @OneToMany
+    @JoinColumn (name = "post_id")
 
-    public User (long id, String username, String password){
+    private List<Post> post;
+
+
+    public User (long id, String username, String email, String password){
         this.id = id;
         this.username = username;
+        this.email = email;
         this.password = password;
 
     }
+
 
     protected User (){
 

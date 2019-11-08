@@ -4,4 +4,8 @@
 
 header.jumbotron {
     margin: 0 !important;
+    background-image: url('../static.css/springblogimage.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+
 }

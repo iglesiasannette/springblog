@@ -8,18 +8,18 @@
 </head>
 <body>
 <div th:replace="fragments/navbar :: main-navbar"></div>
-<header class="jumbotron">
-    <h1 class="display-3 text-center">Featured Ads</h1>
+<header class="jumbotron" src="../static.css/springblogimage.jpg">
+    <h1 class="display-3 text-center" >Featured Posts</h1>
 </header>
 <div class="container">
 
-<div class="card" th:each="post : ${posts}">
-
+<div class="card"  th:each="post : ${posts}">
+    <div class="card-body" >
     <a th:href="@{'posts/' + ${post.id}}" th:text="${post.title}"></a>
 
 <!--    <h1 th:text="${post.title}"></h1>-->
     <p th:text="${post.body}"></p>
-
+    </div>
 
 <!--    <input type="hidden" name="id" th:value="${post.id}">-->
 </div>
