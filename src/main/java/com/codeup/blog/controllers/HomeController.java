@@ -25,7 +25,7 @@ public class HomeController {
 
 
 //    version 2
-    @RequestMapping(path = "/home", method = RequestMethod.POST)
+    @RequestMapping(path = "/home", method = RequestMethod.GET)
     public String index(){
         return "posts/home";
     }

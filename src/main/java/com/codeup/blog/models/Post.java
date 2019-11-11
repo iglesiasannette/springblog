@@ -27,12 +27,23 @@ public class Post {
     @Column(columnDefinition = "TEXT")
     private String body;
 
-    @OneToOne
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
+
 
 
     public Post (long id, String title, String body){
         this.id = id;
+        this.title = title;
+        this.body = body;
+
+    }
+
+
+    //this constructor is for the post/create form and saves the title and body the user types in
+    public Post (String title, String body){
         this.title = title;
         this.body = body;
 
@@ -66,5 +77,14 @@ public class Post {
     public void setId(long id) {
         this.id = id;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
 
 }

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link href="../../static.css/style.css" rel="stylesheet">
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="fragments/navbar :: main-navbar"></div>
+<header class="jumbotron">
+    <h1 class="display-3 text-center">Welcome!</h1>
+</header>
+
+<div class="container mx-auto">
+    <div class = "row">
+         <div class="col-md-6 col-lg-4">
+
+                <div class="card" style="width: 18rem;"><img alt="Card image cap" class="card-img-top img-fluid" src="../../static.css/pic5.jpg" />
+<!--        <img class="card-img-top" src="../../static.css/springblogimage.jpg" alt="Card image cap">-->
+                    <div class="card-body" >
+                        <p class="card-text">See All The Posts</p>
+                        <a href="/posts" class="btn btn-primary">See All The Posts</a>
+                    </div>
+                </div>
+         </div>
+
+
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="..." alt="Card image cap">
+            <div class="card-body">
+                    <p class="card-text">Create A Post</p>
+                        <a href="/posts/create" class="btn btn-primary">Create A Post</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

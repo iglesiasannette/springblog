@@ -27,11 +27,18 @@ public class User {
     @Column(nullable = false, length = 100)
     private String password;
 
-    @OneToMany
-    @JoinColumn (name = "post_id")
 
-    private List<Post> post;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Post> posts;
 
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public User (long id, String username, String email, String password){
         this.id = id;
@@ -78,6 +85,14 @@ public class User {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
     }
 
 
