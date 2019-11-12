@@ -10,17 +10,20 @@
 <div th:replace="fragments/navbar :: main-navbar"></div>
 <div class="container mx-auto mt-3">
 
-<div class="card" th:each="post : ${post}">
+
     <h1 th:text="${post.title}"></h1>
     <p th:text="${post.body}"></p>
-    <p> Posted By: <span th:text="${post.user.email}"></span></p>
+    <p>Posted By: <span th:text="${post.user.email}"></span></p>
+
+
+
 
 
     <a th:href="@{'/posts/' + ${post.id} + '/edit'}" class="btn btn-primary btn-sm">Edit</a>
     <form th:action="@{'/posts/' + ${post.id} + '/delete'}" method="post">
         <button class="btn btn-danger btn-block">Delete Post</button>
     </form>
-</div>
+</form>
 </div>
 <div th:replace="fragments/footer :: main-footer"></div>
 </body>

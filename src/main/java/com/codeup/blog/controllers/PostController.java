@@ -31,27 +31,28 @@ public class PostController{
     }
 
 
+    //this method renders the view and creates a new Post
     @RequestMapping(path = "/posts/create", method = RequestMethod.GET)
-    public String showCreateForm(){
+    public String showCreateForm(Model vModel){
+        vModel.addAttribute("post", new Post());
 
         return "posts/create";
     }
 
-    //1. this method is requesting the parameters from the form title and body and posting it
+    //1. this method is getting the parameters from the form title and body and posting it
     //to the post/create form.
-    //2. A new Post object named post is being made and the parameters
-    //the user entered are being passed into the new post as variables. (note: a new Post
+    //2. A new Post object named postToBeCreated is rendered on the page and the parameters
+    //the user entered are being passed and saved into the new post. (note: a new Post
     //constructor in the Post class was made as to be able to create a Post object that just took in the title
     //and body variables.)
     //3. the setUser method needs to reference the userDao to assign the User to the specific post.
     //(note: a UserRepository was needed to be made to be able to link the post_id and user_id
     //4. the postDao needs to be referenced as to save the info of the post.
-    //5. the user is redirected to their own post
+    //5. the user is redirected to /posts
     @RequestMapping(path = "/posts/create", method = RequestMethod.POST)
-    public String create(@RequestParam String title, @RequestParam String body){
-        Post post = new Post(title,body);
-        post.setUser(userDao.getOne(1L));
-        postDao.save(post);
+    public String create(@ModelAttribute Post postToBeCreated){
+        postToBeCreated.setUser(userDao.getOne(1L));
+        postDao.save(postToBeCreated);
         return "redirect:/posts";
     }
 
@@ -65,6 +66,7 @@ public class PostController{
 
 @GetMapping("/posts/{id}")
 public String show(@PathVariable long id, Model viewModel){
+    System.out.println(postDao.getOne(id).getUser().getEmail());
     viewModel.addAttribute("post", postDao.getOne(id));
     return "posts/show";
 }
@@ -74,6 +76,8 @@ public String show(@PathVariable long id, Model viewModel){
     //the addAttribute method is used to assign the old title and body (via the post id)
     // to the view of the edit page,
     // then comes the update method...
+
+
     @GetMapping("/posts/{id}/edit")
     public String edit(@PathVariable long id, Model viewModel) {
         viewModel.addAttribute("post", postDao.getOne(id));
@@ -85,11 +89,9 @@ public String show(@PathVariable long id, Model viewModel){
     //post via it's unique id with the variable name oldPost. That way, when the user visits that particular
     //post's edit page, the form is pre-populated with the old data.
     @PostMapping("/posts/{id}/edit")
-    public String update(@PathVariable long id, @RequestParam String title, @RequestParam String body) {
-        Post oldPost = postDao.getOne(id);
-        oldPost.setTitle(title);
-        oldPost.setBody(body);
-        postDao.save(oldPost);
+    public String update(@PathVariable long id, @ModelAttribute Post updatedPost) {
+        updatedPost.setUser(userDao.getOne(1L));
+        postDao.save(updatedPost);
         return "redirect:/posts/" + id;
     }
 

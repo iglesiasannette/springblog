@@ -13,14 +13,14 @@
         <h1 class="display-3 text-center">Edit Post</h1>
     </header>
     <div class="card p-3">
-        <form th:action="'/posts/' + ${post.id} + '/edit'" th:method="post">
+        <form th:action="'/posts/' + ${post.id} + '/edit'" th:method="post" th:object="${post}">
             <div class="form-group">
                 <label for="title">Title</label>
-                <input class="form-control" id="title" type="text" th:value="${post.title}" name="title">
+                <input class="form-control" id="title" type="text" th:value="*{title}" name="title">
             </div>
             <div class="form-group">
                 <label for="body">Body</label>
-                <textarea class="form-control" id="body" th:text="${post.body}" name="body"></textarea>
+                <textarea class="form-control" id="body" th:text="*{body}" name="body"></textarea>
             </div>
             <button class="btn btn-primary btn-block">Update</button>
         </form>
