@@ -8,23 +8,25 @@
 </head>
 <body class="h-100">
 <div th:replace="fragments/navbar :: main-navbar"></div>
-<div class="container mx-auto mt-3">
+<header class="jumbotron" src="../static.css/springblogimage.jpg">
+    <h1 class="display-3 text-center " th:text="${post.title}" ></h1>
+</header>
+
+    <div class="container h-100 mt-3 mb-3">
+
+        <h1 th:text="${post.title}"></h1>
+            <p th:text="${post.body}"></p>
+                <p>Posted By: <span th:text="${post.user.email}"></span></p>
 
 
-    <h1 th:text="${post.title}"></h1>
-    <p th:text="${post.body}"></p>
-    <p>Posted By: <span th:text="${post.user.email}"></span></p>
-
-
-
-
-
-    <a th:href="@{'/posts/' + ${post.id} + '/edit'}" class="btn btn-primary btn-sm">Edit</a>
-    <form th:action="@{'/posts/' + ${post.id} + '/delete'}" method="post">
-        <button class="btn btn-danger btn-block">Delete Post</button>
+    <form>
+    <a th:href="@{'/posts/' + ${post.id} + '/edit'}" class="btn btn-primary btn-block">Edit</a>
     </form>
-</form>
-</div>
-<div th:replace="fragments/footer :: main-footer"></div>
+        <form th:action="@{'/posts/' + ${post.id} + '/delete'}" method="post">
+            <button class="btn btn-danger btn-block">Delete Post</button>
+        </form>
+    </div>
+
 </body>
+<div th:replace="fragments/footer :: main-footer"></div>
 </html>

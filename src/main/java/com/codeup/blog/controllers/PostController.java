@@ -2,7 +2,9 @@ package com.codeup.blog.controllers;
 
 import com.codeup.blog.Repositories.PostRepository;
 import com.codeup.blog.Repositories.UserRepository;
+import com.codeup.blog.Services.EmailService;
 import com.codeup.blog.models.Post;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +20,12 @@ public class PostController{
 
     private final PostRepository postDao;
     private final UserRepository userDao;
+
+
+    //dependency injection
+    @Autowired
+    EmailService emailService;
+
 
     public PostController(PostRepository postDao, UserRepository userDao) {
         this.postDao = postDao;
@@ -52,7 +60,9 @@ public class PostController{
     @RequestMapping(path = "/posts/create", method = RequestMethod.POST)
     public String create(@ModelAttribute Post postToBeCreated){
         postToBeCreated.setUser(userDao.getOne(1L));
-        postDao.save(postToBeCreated);
+        Post savedPost = postDao.save(postToBeCreated);
+        emailService.prepareAndSend(savedPost, "post created", "A new post has been created with the id of " +
+                 + savedPost.getId());
         return "redirect:/posts";
     }
 

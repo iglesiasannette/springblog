@@ -6,13 +6,12 @@
     <title>Edit Post</title>
 </head>
 <body>
+<div th:replace="fragments/navbar :: main-navbar"></div>
+<header class="jumbotron">
+    <h1 class="display-3 text-center">Edit Post</h1>
+</header>
+<div class="container h-100">
 
-
-<div class="container mt-3">
-    <header class="jumbotron my-3">
-        <h1 class="display-3 text-center">Edit Post</h1>
-    </header>
-    <div class="card p-3">
         <form th:action="'/posts/' + ${post.id} + '/edit'" th:method="post" th:object="${post}">
             <div class="form-group">
                 <label for="title">Title</label>
@@ -24,8 +23,8 @@
             </div>
             <button class="btn btn-primary btn-block">Update</button>
         </form>
-    </div>
-</div>
 
+</div>
 </body>
+<div th:replace="fragments/footer :: main-footer"></div>
 </html>
