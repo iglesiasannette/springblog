@@ -52,7 +52,7 @@ public class PostController{
         Post post = new Post(title,body);
         post.setUser(userDao.getOne(1L));
         postDao.save(post);
-        return "redirect:/posts/1";
+        return "redirect:/posts";
     }
 
 
