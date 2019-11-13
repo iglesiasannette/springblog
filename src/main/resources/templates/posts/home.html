@@ -3,37 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <link href="../../static.css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../static.css/style.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <title>Title</title>
 </head>
+<body>
 <div th:replace="fragments/navbar :: main-navbar"></div>
-<header class="jumbotron">
-    <h1 class="display-3 text-center">Welcome!</h1>
-</header>
+<!--    <h1 class="display-3 text-center">Welcome!</h1>-->
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner" style="height: 500px;">
+            <div class="carousel-item active" style="height: 500px;">
+                <img class="d-block w-100 h-100"  src="https://images.unsplash.com/photo-1568598035424-7070b67317d2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=749&q=80 " alt="First slide">
+                <div class="carousel-caption d-none d-md-block">
+                    <h1>Jobs</h1>
+                    <p>...</p>
+                </div>
+            </div>
+            <div class="carousel-item" style="height: 500px;">
+                <img class="d-block w-100" src="https://images.unsplash.com/photo-1464082354059-27db6ce50048?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80 " alt="Second slide" style="height: 500px;">
+                <div class="carousel-caption d-none d-md-block">
+                    <h1 class="text-dark">Housing</h1>
+                    <p>...</p>
+                </div>
+            </div>
+            <div class="carousel-item" style="height: 500px;">
+                <img class="d-block w-100 h-100" src="https://images.unsplash.com/photo-1502872364588-894d7d6ddfab?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80 " alt="Third slide" style="height: 500px;">
+                <div class="carousel-caption d-none d-md-block">
+                    <h1>Events</h1>
+                    <p>...</p>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
 
 <div class="container mx-auto w-75">
     <div class = "row">
          <div class="col-md-6 col-lg-4">
-
-                <div class="card p-3 border-0" style="width: 18rem;"><img class="card-img-top img-fluid" src="" alt="Image Cap"/>
+             <div class="card p-4 border-0" style="width: 18rem;"><img class="card-img-top img-fluid" src="" alt=""/>
 <!--        <img class="card-img-top" src="../../static.css/springblogimage.jpg" alt="Card image cap">-->
                     <div class="card-body" >
                         <p class="card-text">See All The Posts</p>
-                        <a href="/posts" class="btn btn-primary">See All The Posts</a>
+                        <a href="/posts" class="btn btn-primary mt-3">See All The Posts</a>
                     </div>
-                </div>
+             </div>
          </div>
 
         <div class="col-md-6 col-lg-4">
-        <div class="card p-3 border-0" style="width: 18rem;">
-            <img class="card-img-top" src="..." alt="">
-            <div class="card-body">
-                    <p class="card-text">Create A Post</p>
-                        <a href="/posts/create" class="btn btn-primary">Create A Post</a>
+            <div class="card p-4 border-0" style="width: 18rem;">
+                <img class="card-img-top" src="" alt="">
+                     <div class="card-body">
+                        <p class="card-text">Create A Post</p>
+                        <a href="/posts/create" class="btn btn-primary mt-3" >Create A Post</a>
+                     </div>
             </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+
+            <div class="card p-3 border-0" style="width: 18rem;"><img class="card-img-top img-fluid" src="" alt=""/>
+                <!--        <img class="card-img-top" src="../../static.css/springblogimage.jpg" alt="Card image cap">-->
+                <div class="card-body" >
+                    <p class="card-text">Have an account? Login! Need An Account? Register!</p>
+                    <a href="/posts" class="btn btn-primary">Register/Login</a>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
+</body>
 </html>
