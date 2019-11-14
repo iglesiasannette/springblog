@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <meta charset="UTF-8">
@@ -19,14 +20,19 @@
                 <p>Posted By: <span th:text="${post.user.email}"></span></p>
 
 
-    <form>
-    <a th:href="@{'/posts/' + ${post.id} + '/edit'}" class="btn btn-primary btn-block">Edit</a>
-    </form>
-        <form th:action="@{'/posts/' + ${post.id} + '/delete'}" method="post">
-            <button class="btn btn-danger btn-block">Delete Post</button>
-        </form>
-    </div>
+        <div sec:authorize="isAuthenticated()">
 
+        <th:block th:if="${post.user.id == #authentication.principal.id}">
+             <form>
+                 <a th:href="@{'/posts/' + ${post.id} + '/edit'}" class="btn btn-primary btn-block">Edit</a>
+            </form>
+            <form th:action="@{'/posts/' + ${post.id} + '/delete'}" method="post">
+                <button class="btn btn-danger btn-block">Delete Post</button>
+            </form>
+        </th:block>
+
+    </div>
+    </div>
 </body>
 <div th:replace="fragments/footer :: main-footer"></div>
 </html>
