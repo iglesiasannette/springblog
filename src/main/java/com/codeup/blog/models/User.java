@@ -17,10 +17,10 @@ public class User {
     @Column(columnDefinition = "int(11) UNSIGNED")
     private long id;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false, length = 100, unique=true)
     private String username;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false, length = 100, unique=true)
     private String email;
 
 
@@ -32,14 +32,6 @@ public class User {
     private List<Post> posts;
 
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public User (long id, String username, String email, String password){
         this.id = id;
         this.username = username;
@@ -48,9 +40,25 @@ public class User {
 
     }
 
+    public User(User copy) {
+        id = copy.id; // This line is SUPER important! Many things won't work if it's absent
+        email = copy.email;
+        username = copy.username;
+        password = copy.password;
+    }
 
-    protected User (){
 
+    public User (){
+
+    }
+
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {

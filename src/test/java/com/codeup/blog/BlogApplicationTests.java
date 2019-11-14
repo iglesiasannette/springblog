@@ -1,4 +1,4 @@
-package com.codeup.blog.blog;
+package com.codeup.blog;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,8 +9,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class BlogApplicationTests {
 
+
+
     @Test
     public void contextLoads() {
     }
+
 
 }

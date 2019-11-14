@@ -5,18 +5,30 @@
     <title>Sign up</title>
 </head>
 <body>
-<h1>Create an account</h1>
+<div class="row justify-content-md-center mt-5">
+    <div class="card mx-auto col-md-4" style="width: 500px;">
+        <div class="card-body mx-auto" >
+            <h1 class="display-4 text-center">Create an account</h1>
+
 <form th:action="@{/sign-up}" method="POST" th:object="${user}">
-    <label for="username">Username</label>
-    <input id="username" th:field="*{username}" />
+    <div class="form-group">
+        <label for="username">Username</label>
+            <input id="username" th:field="*{username}" />
+    </div>
 
-    <label for="email">Email</label>
-    <input id="email" th:field="*{email}" />
+    <div class="form-group">
+        <label for="email">Email</label>
+            <input id="email" th:field="*{email}" />
+    </div>
 
-    <label for="password">Password</label>
-    <input id="password" type="password" th:field="*{password}" />
-
+    <div class="form-group">
+        <label for="password">Password</label>
+            <input id="password" type="password" th:field="*{password}" />
+    </div>
     <input value="Sign me up!" type="submit" />
 </form>
+        </div>
+    </div>
+</div>
 </body>
 </html>

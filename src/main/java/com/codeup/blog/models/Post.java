@@ -5,11 +5,6 @@ import javax.persistence.*;
 //Create a Post class. This class will ultimately represent a POST record from our database.
 // The class should have private properties and getters and setters for a title and body.
 
-import com.codeup.blog.Repositories.PostRepository;
-import org.springframework.data.jpa.repository.JpaRepository;
-
-import javax.persistence.*;
-import java.awt.*;
 
 @Entity
 @Table(name="posts")

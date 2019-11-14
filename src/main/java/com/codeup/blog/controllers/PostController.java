@@ -1,16 +1,17 @@
 package com.codeup.blog.controllers;
 
-import com.codeup.blog.Repositories.PostRepository;
-import com.codeup.blog.Repositories.UserRepository;
-import com.codeup.blog.Services.EmailService;
+import com.codeup.blog.models.User;
+import com.codeup.blog.repositories.PostRepository;
+import com.codeup.blog.repositories.UserRepository;
+import com.codeup.blog.services.EmailService;
 import com.codeup.blog.models.Post;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import java.util.ArrayList;
 
 
 @Controller
@@ -33,8 +34,9 @@ public class PostController{
     }
 
     @GetMapping("/posts")
-    public String index(Model model) {
-        model.addAttribute("posts", postDao.findAll());
+    public String index(Model model, @RequestParam(defaultValue = "") String search) {
+        model.addAttribute("posts", postDao.findByTitleContaining(search));
+
         return "posts/index";
     }
 
@@ -59,7 +61,8 @@ public class PostController{
     //5. the user is redirected to /posts
     @RequestMapping(path = "/posts/create", method = RequestMethod.POST)
     public String create(@ModelAttribute Post postToBeCreated){
-        postToBeCreated.setUser(userDao.getOne(1L));
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        postToBeCreated.setUser(user);
         Post savedPost = postDao.save(postToBeCreated);
         emailService.prepareAndSend(savedPost, "post created", "A new post has been created with the id of " +
                  + savedPost.getId());
